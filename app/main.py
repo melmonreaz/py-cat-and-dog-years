@@ -1,4 +1,4 @@
-def get_age(age: int| str, divider: int) -> int:
+def get_age(age: int | str, divider: int) -> int:
     if not isinstance(age, int):
         raise TypeError("age must be an integer")
     if age < 0:

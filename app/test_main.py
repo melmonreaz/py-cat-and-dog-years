@@ -18,8 +18,13 @@ import pytest
         (1000, 1000, [246, 197])
     ]
 )
-def test_basic_parametrized_structure(cat_age: int, dog_age: int, result: list[int]) -> None:
+def test_basic_parametrized_structure(
+        cat_age: int,
+        dog_age: int,
+        result: list[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
 
 @pytest.mark.parametrize(
     "cat_age,dog_age,error",
@@ -29,7 +34,10 @@ def test_basic_parametrized_structure(cat_age: int, dog_age: int, result: list[i
         ("cat", "dog", TypeError),
     ]
 )
-def test_edged_situations(cat_age: int | str, dog_age: int | str, error: type[Exception]) -> None:
+def test_edged_situations(
+        cat_age: int | str,
+        dog_age: int | str,
+        error: type[Exception]
+) -> None:
     with pytest.raises(error):
         get_human_age(cat_age, dog_age)
-
