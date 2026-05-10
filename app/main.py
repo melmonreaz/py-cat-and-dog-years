@@ -1,4 +1,8 @@
-def get_age(age: int, divider: int) -> int:
+def get_age(age: int| str, divider: int) -> int:
+    if not isinstance(age, int):
+        raise TypeError("age must be an integer")
+    if age < 0:
+        raise ValueError("age must be >= 0")
     result = 0
     if age // 15:
         result += 1
@@ -16,7 +20,7 @@ def get_age(age: int, divider: int) -> int:
     return result
 
 
-def get_human_age(cat_age: int, dog_age: int) -> list[int]:
+def get_human_age(cat_age: int | str, dog_age: int | str) -> list[int]:
     """
     Convert cat and dog ages to human years.
 
@@ -36,7 +40,6 @@ def get_human_age(cat_age: int, dog_age: int) -> list[int]:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
-    # TODO: Implement this function
     cat_human_age = get_age(cat_age, 4)
     dog_human_age = get_age(dog_age, 5)
     return [cat_human_age, dog_human_age]
